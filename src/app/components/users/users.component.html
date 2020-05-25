@@ -1,0 +1,37 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="Id">User ID:</label>
+    <input type="number" class="form-control" placeholder="User Id" id="UserId" formControlName="userid">
+  </div>
+  <div class="form-group">
+    <label for="name">name:</label>
+    <input type="text" class="form-control" placeholder="Enter name" id="name" formControlName="username">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  &nbsp;
+  <button type="button" class="btn btn-primary" (click)="onUpdate()">Update</button>
+</form>
+
+&nbsp;
+&nbsp;
+<h3>User Table</h3>
+<table class="table table-striped">
+  <thead class="thead-inverse">
+    <tr>
+      <th>
+        Sr.No.
+      </th>
+      <th>Id <i class="fas fa-trash-alt"></i></th>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of myUsers , let i = index ">
+        <td>{{i+1}}</td>
+        <td>{{ item.userid }}</td>
+        <td>{{ item.username }}</td>
+        <td><a>update</a> <i class="fas fa-trash-alt"></i>&nbsp;<button type="button" class="btn btn-danger" (click)="onDelete(item.userid)">Delete</button></td>
+      </tr>
+    </tbody>
+</table>
